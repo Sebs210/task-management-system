@@ -1,0 +1,10 @@
+com\taskmanagement\TaskApiApplication.class
+com\taskmanagement\exception\ResourceNotFoundException.class
+com\taskmanagement\model\Task.class
+com\taskmanagement\config\SwaggerConfig.class
+com\taskmanagement\repository\TaskRepository.class
+com\taskmanagement\config\SecurityConfig.class
+com\taskmanagement\service\TaskService.class
+com\taskmanagement\dto\TaskDto.class
+com\taskmanagement\config\SecurityConfig$1.class
+com\taskmanagement\controller\TaskController.class
