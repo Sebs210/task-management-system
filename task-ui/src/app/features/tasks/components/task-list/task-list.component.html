@@ -1,0 +1,76 @@
+<div class="task-list-container">
+  <div class="task-list-header">
+    <h1>Sistema de Gestión de Tareas</h1>
+    <div class="header-actions">
+      <button mat-raised-button color="primary" (click)="openTaskForm()">
+        <mat-icon>add</mat-icon> Nueva Tarea
+      </button>
+      <button
+        mat-raised-button
+        color="accent"
+        (click)="loadTasks()"
+        [disabled]="loading$ | async"
+      >
+        <mat-icon>refresh</mat-icon> Refrescar
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="error$ | async as error" class="error-message">
+    <mat-error>Error: {{ error }}</mat-error>
+  </div>
+
+  <div *ngIf="loading$ | async" class="loading-spinner">
+    <mat-spinner diameter="40"></mat-spinner>
+  </div>
+
+  <div class="task-board">
+    <div class="task-column">
+      <h2>Por Hacer</h2>
+      <div class="task-cards">
+        <ng-container *ngFor="let task of tasks$ | async">
+          <app-task-item
+            *ngIf="task?.status === TaskStatus.TODO"
+            [task]="task"
+            (edit)="openTaskForm($event)"
+            (delete)="deleteTask($event)"
+            (statusChange)="updateTaskStatus($event.task, $event.status)"
+          >
+          </app-task-item>
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="task-column">
+      <h2>En Progreso</h2>
+      <div class="task-cards">
+        <ng-container *ngFor="let task of tasks$ | async">
+          <app-task-item
+            *ngIf="task?.status === TaskStatus.IN_PROGRESS"
+            [task]="task"
+            (edit)="openTaskForm($event)"
+            (delete)="deleteTask($event)"
+            (statusChange)="updateTaskStatus($event.task, $event.status)"
+          >
+          </app-task-item>
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="task-column">
+      <h2>Completadas</h2>
+      <div class="task-cards">
+        <ng-container *ngFor="let task of tasks$ | async">
+          <app-task-item
+            *ngIf="task?.status === TaskStatus.COMPLETED"
+            [task]="task"
+            (edit)="openTaskForm($event)"
+            (delete)="deleteTask($event)"
+            (statusChange)="updateTaskStatus($event.task, $event.status)"
+          >
+          </app-task-item>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>

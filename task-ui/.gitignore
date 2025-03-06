@@ -1,0 +1,29 @@
+# Node modules
+node_modules/
+dist/
+.angular/
+
+# Java / Maven / Gradle
+target/
+build/
+.gradle/
+*.class
+
+# IDEs and editors
+.idea/
+.vscode/
+*.iml
+.project
+.classpath
+.settings/
+
+# Logs
+*.log
+logs/
+
+# Environment variables
+.env
+
+# System Files
+.DS_Store
+Thumbs.db

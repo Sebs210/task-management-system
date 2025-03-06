@@ -1,0 +1,32 @@
+<mat-card class="task-card" *ngIf="task">
+  <mat-card-header>
+    <mat-card-title>{{ task.title || "No Title" }}</mat-card-title>
+    <mat-card-subtitle>
+      <mat-form-field appearance="outline" class="status-select">
+        <mat-label>Estado</mat-label>
+        <mat-select
+          [value]="task.status"
+          (selectionChange)="onStatusChange($event.value)"
+        >
+          <mat-option
+            *ngFor="let option of statusOptions"
+            [value]="option.value"
+          >
+            {{ option.label }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>{{ task.description || "No Description" }}</p>
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button mat-icon-button color="primary" (click)="onEdit()">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-icon-button color="warn" (click)="onDelete()">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>
