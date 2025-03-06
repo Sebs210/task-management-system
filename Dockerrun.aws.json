@@ -1,8 +1,5 @@
 {
-  "AWSEBDockerrunVersion": "3",
-  "Image": {
-    "Name": "amazon/amazon-linux:latest"
-  },
+  "AWSEBDockerrunVersion": "2",
   "PortMappings": [
     {
       "HostPort": 80,
@@ -13,21 +10,10 @@
       "ContainerPort": 8080
     }
   ],
-  "Volumes": [
-    {
-      "Host": {
-        "SourcePath": "/var/app/current/docker-compose.yml"
-      },
-      "Container": {
-        "SourcePath": "/docker-compose.yml"
-      }
-    }
-  ],
   "MountPoints": [
     {
       "SourceVolume": "awseb-logs-task-ui",
       "ContainerPath": "/var/log/nginx"
     }
-  ],
-  "Logging": "/var/log/nginx"
+  ]
 }
