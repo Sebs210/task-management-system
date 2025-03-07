@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Task } from '../models/task.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TaskService {
-  private apiUrl = 'http://localhost:8080/tasks'; // Backend API URL
+  private apiUrl = `${environment.apiUrl}/tasks`; // Usa la URL del entorno con el endpoint /tasks
 
   constructor(private http: HttpClient) {}
 
